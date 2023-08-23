@@ -2,6 +2,8 @@
 
 **fair random** is a random library with hash prove
 
+## How server generate random numbers
+
 ```python
 >>> from fair_random import get_client_seed, get_server_seed, get_final_seed
 >>> client_seed = get_client_seed("123")
@@ -21,3 +23,18 @@
 ```
 
 You can expose server_seed.server_prove before the game starts, allow clients to provide random input, and then expose server_seed.hash after the game ends to demonstrate the immutability of the game.
+
+## How client prove server fair
+
+```python
+>> import hashlib
+>> from fair_random import get_client_seed, get_final_seed, Dice, Seed
+>> client_seed = get_client_seed("123")
+>> server_seed = Seed(hash="b83268d870a9045241918ee76041046e3ca1cb94230bfe6163401ea0ec8df907")
+>> hashlib.sha256(b"b83268d870a9045241918ee76041046e3ca1cb94230bfe6163401ea0ec8df907").hexdigest() == "19d3b12106df35a87cb784986a8382b3f5eaa5da3bd67e38aa8abc07a5e2ae3d"
+True
+>> final_seed = get_final_seed(server_seed, [client_seed])
+>> dice = Dice()
+>> dice.get_value(final_seed)
+3
+```
