@@ -20,4 +20,4 @@
 3
 ```
 
-You can expose server_seed.server_prove before the game starts, allow clients to provide random input, and then expose server_seed.hash after the game ends to demonstrate the immutability of the game."
+You can expose server_seed.server_prove before the game starts, allow clients to provide random input, and then expose server_seed.hash after the game ends to demonstrate the immutability of the game.
