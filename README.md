@@ -35,6 +35,6 @@ You can expose server_seed.server_prove before the game starts, allow clients to
 True
 >> final_seed = get_final_seed(server_seed, [client_seed])
 >> dice = Dice()
->> dice.get_value(final_seed)
-3
+>> dice.get_value(final_seed) == 3
+True
 ```
